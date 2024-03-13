@@ -1,5 +1,5 @@
-const inputBox = document.getElementById("inputbox");
-const listContainer = document.getElementById("list-container");
+const inputBox = document.querySelector("#inputbox");
+const listContainer = document.querySelector("#list-container");
 
 function addTask()
 {
@@ -19,19 +19,20 @@ function addTask()
     saveData();
 }
 
-listContainer.addEventListener("click",function(e){
+listContainer.addEventListener("click",(e)=>{
     if(e.target.tagName === "LI"){
         e.target.classList.toggle("checked");
         saveData();
-    }else if(e.target.tagName === "SPAN"){
+    }
+    else if(e.target.tagName === "SPAN"){
             e.target.parentElement.remove();
             saveData();
     }
-}, false);
+} );
 
 function saveData()
 {
-    localStorage.setItem("data",listContainer.innerHTML);
+    localStorage.setItem("data", listContainer.innerHTML);
 }
 
 function showList()
